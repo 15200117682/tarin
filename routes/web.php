@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get("/user/add","UserController@useradd");        //测试用户添加
