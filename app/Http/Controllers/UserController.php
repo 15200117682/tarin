@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\UserModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -19,5 +20,16 @@ class UserController extends Controller
         if($uid){
             echo $uid;exit;
         }
+    }
+
+    public function testRedis(){
+        $key="username";
+        $value=Redis::get($key);
+        if(!$value){
+            Redis::set($key,"zhangsan");
+            Redis::expire($key,10);
+            $value=Redis::get($key);
+        }
+        var_dump($value);
     }
 }
