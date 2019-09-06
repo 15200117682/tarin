@@ -19,3 +19,7 @@ Route::get('/info', function () {
 });
 Route::get("/user/add","UserController@useradd");        //测试用户添加
 Route::get("/test/redis","UserController@testRedis");        //测试扩展
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
